@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://ws.siagf.paperless.cl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://ws.siagf.paperless.cl">
+    <wsdl:documentation>ActualizarCausante</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ns="http://ws.siagf.paperless.cl" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.siagf.paperless.cl">
+            <xs:element name="actualizarCausante">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="XmlDetalle" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="actualizarCausanteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="actualizarCausanteRequest">
+        <wsdl:part name="parameters" element="ns0:actualizarCausante"/>
+    </wsdl:message>
+    <wsdl:message name="actualizarCausanteResponse">
+        <wsdl:part name="parameters" element="ns0:actualizarCausanteResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ActualizarCausantePortType">
+        <wsdl:operation name="actualizarCausante">
+            <wsdl:input message="ns0:actualizarCausanteRequest" wsaw:Action="urn:actualizarCausante"/>
+            <wsdl:output message="ns0:actualizarCausanteResponse" wsaw:Action="urn:actualizarCausanteResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ActualizarCausanteSOAP11Binding" type="ns0:ActualizarCausantePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="actualizarCausante">
+            <soap:operation soapAction="urn:actualizarCausante" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ActualizarCausanteSOAP12Binding" type="ns0:ActualizarCausantePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="actualizarCausante">
+            <soap12:operation soapAction="urn:actualizarCausante" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ActualizarCausanteHttpBinding" type="ns0:ActualizarCausantePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="actualizarCausante">
+            <http:operation location="ActualizarCausante/actualizarCausante"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="actualizarCausante"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="actualizarCausante"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ActualizarCausante">
+        <wsdl:port name="ActualizarCausanteSOAP11port_http" binding="ns0:ActualizarCausanteSOAP11Binding">
+            <soap:address location="http://siagfqa.paperless.cl:80/axis2/services/ActualizarCausante"/>
+        </wsdl:port>
+        <wsdl:port name="ActualizarCausanteSOAP12port_http" binding="ns0:ActualizarCausanteSOAP12Binding">
+            <soap12:address location="http://siagfqa.paperless.cl:80/axis2/services/ActualizarCausante"/>
+        </wsdl:port>
+        <wsdl:port name="ActualizarCausanteHttpport" binding="ns0:ActualizarCausanteHttpBinding">
+            <http:address location="http://siagfqa.paperless.cl:80/axis2/services/ActualizarCausante"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

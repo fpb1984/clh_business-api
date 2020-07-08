@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="default">
+		<class>cl.clh.tramos.model.Adrc</class>
+		<class>cl.clh.tramos.model.But000</class>
+		<class>cl.clh.tramos.model.But020</class>
+		<class>cl.clh.tramos.model.But050</class>
+		<class>cl.clh.tramos.model.But0i</class>
+		<class>cl.clh.tramos.model.CargasCabLog</class>
+		<class>cl.clh.tramos.model.DatosXmlSiagf</class>
+		<class>cl.clh.tramos.model.DatosXmlSiagf2</class>
+		<class>cl.clh.tramos.model.Dfkkbptaxnum</class>
+		<class>cl.clh.tramos.model.ErroresLog</class>
+		<class>cl.clh.tramos.model.EstadoCodCarga</class>
+		<class>cl.clh.tramos.model.EstadoCodFinal</class>
+		<class>cl.clh.tramos.model.EstadoCodSap</class>
+		<class>cl.clh.tramos.model.EstadoCodSiagf</class>
+		<class>cl.clh.tramos.model.EstadoCodUsuario</class>
+		<class>cl.clh.tramos.model.EstadoCodUsuEmp</class>
+		<class>cl.clh.tramos.model.EstadoIntegraSap</class>
+		<class>cl.clh.tramos.model.HomologacionTramoSiagf</class>
+		<class>cl.clh.tramos.model.IntegraSapRenta</class>
+		<class>cl.clh.tramos.model.ParametrosCircular</class>
+		<class>cl.clh.tramos.model.PropuestasCabLog</class>
+		<class>cl.clh.tramos.model.PropuestasCargaWeb</class>
+		<class>cl.clh.tramos.model.PropuestasEmpresa</class>
+		<class>cl.clh.tramos.model.PropuestasSiagf</class>
+		<class>cl.clh.tramos.model.ServicesCodOrigen</class>
+		<class>cl.clh.tramos.model.ServicesLog</class>
+		<class>cl.clh.tramos.model.TmpDatosXmlSiagf</class>
+		<class>cl.clh.tramos.model.TmpModificaUnitario</class>
+		<class>cl.clh.tramos.model.TmpPropuesta</class>
+		<class>cl.clh.tramos.model.TmpRentasAfiliado</class>
+		<class>cl.clh.tramos.model.ZaftAfa</class>
+		<class>cl.clh.tramos.model.ZaftPropuesta</class>
+		<class>cl.clh.tramos.model.ZaftTramo</class>
+		<class>cl.clh.tramos.model.ZapotRenta</class>
+		<class>cl.clh.tramos.model.ZbptAfaRecon</class>
+		<class>cl.clh.tramos.model.ZlmtValcuosil</class>
+		<class>cl.clh.tramos.model.Company</class>
+		<class>cl.clh.tramos.model.CorporacionesExcluir</class>
+		<class>cl.clh.tramos.model.PasswordReset</class>
+		<class>cl.clh.tramos.model.TemporalEmpresasNombre</class>
+		<class>cl.clh.tramos.model.TestBhpCorreo</class>
+		<class>cl.clh.tramos.model.TmpCorporacione</class>
+		<class>cl.clh.tramos.model.TmpRobotEli</class>
+		<class>cl.clh.tramos.model.TmpUsuariosEmpresa</class>
+		<class>cl.clh.tramos.model.User</class>
+		<class>cl.clh.tramos.model.UsersCompany</class>
+		<class>cl.clh.tramos.model.Preresult</class>
+
+	</persistence-unit>
+</persistence>
