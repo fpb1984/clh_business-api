@@ -46,7 +46,7 @@ public class ActualizaCausanteClient extends WebServiceGatewaySupport {
 				"\n" + 
 				"        <Modificar>\n" + 
 				"\n" + 
-				"            <IngPromedio>" + Integer.parseInt(ingPromedio.toString()) +"</IngPromedio>\n" + 
+				"            <IngPromedio>" + Double.valueOf(ingPromedio.toString()).intValue() +"</IngPromedio>\n" + 
 				"\n" + 
 				"            <Tramos>\n" + 
 				"\n" + 
@@ -56,7 +56,7 @@ public class ActualizaCausanteClient extends WebServiceGatewaySupport {
 				"\n" + 
 				"                    <NumTramo>" + numTramo + "</NumTramo>\n" + 
 				"\n" + 
-				"                    <IngPromedio>"+ Integer.parseInt(ingPromedio.toString()) + "</IngPromedio>\n" + 
+				"                    <IngPromedio>"+ Double.valueOf(ingPromedio.toString()).intValue() + "</IngPromedio>\n" + 
 				"\n" + 
 				"                    <MontoUnitarioBeneficio>" + montoUnitarioBeneficio + "</MontoUnitarioBeneficio>\n" + 
 				"\n" + 
