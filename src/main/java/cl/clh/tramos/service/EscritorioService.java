@@ -80,25 +80,25 @@ public class EscritorioService {
 		int montoUnitario;
 		switch(propuesta.getTramo()) {
 		
-			case "A":
+					case "A":
 				tramo = 1;
 				montoUnitario = 12364;
 				break;
 			case "B":
 				tramo = 2;
-				montoUnitario = 12364;
+				montoUnitario = 7587;
 				break;
 			case "C":
 				tramo = 3;
-				montoUnitario = 12364;
+				montoUnitario = 2398;
 				break;
 			case "D":
 				tramo = 4;
-				montoUnitario = 12364;
+				montoUnitario = 0;
 				break;
 			default:
 				tramo = 4;
-				montoUnitario = 12364;
+				montoUnitario = 0;
 				break;
 		}
 		Respuesta2 respuesta = actualizaCausanteClient.modificarCausante(token, propuesta.getRutAfiliado(), propuesta.getRentaProm(), propuesta.getPeriodo(), tramo,montoUnitario, causante);
