@@ -12,8 +12,8 @@
 	</parent>
 	
 
-	<groupId>fiscalia.rpg.bpm.api</groupId>
-	<artifactId>rgp-escritorio-bpm-api</artifactId>
+	<groupId>clh.bpm.api</groupId>
+	<artifactId>clh-tramos-bpm-api</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 	
