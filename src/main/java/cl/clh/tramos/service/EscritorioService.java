@@ -103,7 +103,7 @@ public class EscritorioService {
 		}
 		Respuesta2 respuesta = actualizaCausanteClient.modificarCausante(token, propuesta.getRutAfiliado(), propuesta.getRentaProm(), propuesta.getPeriodo(), tramo,montoUnitario, causante);
 			
-		if(respuesta.getCodigo().equals("0")) {
+		if(respuesta != null) {
 			PropuestasSiagf ps = new PropuestasSiagf();
 			ps.setCodEstadoFinal(Integer.parseInt(respuesta.getCodigo()));
 			ps.setCodEstadoSiagf(Integer.parseInt(respuesta.getCodigo()));
