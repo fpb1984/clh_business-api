@@ -46,7 +46,7 @@ public class ActualizaCausanteClient extends WebServiceGatewaySupport {
 				"\n" + 
 				"        <Modificar>\n" + 
 				"\n" + 
-				"            <IngPromedio>" + ingPromedio +"</IngPromedio>\n" + 
+				"            <IngPromedio>" + Double.valueOf(ingPromedio.toString()).intValue() +"</IngPromedio>\n" + 
 				"\n" + 
 				"            <Tramos>\n" + 
 				"\n" + 
@@ -56,7 +56,7 @@ public class ActualizaCausanteClient extends WebServiceGatewaySupport {
 				"\n" + 
 				"                    <NumTramo>" + numTramo + "</NumTramo>\n" + 
 				"\n" + 
-				"                    <IngPromedio>"+ ingPromedio + "</IngPromedio>\n" + 
+				"                    <IngPromedio>"+ Double.valueOf(ingPromedio.toString()).intValue()  + "</IngPromedio>\n" + 
 				"\n" + 
 				"                    <MontoUnitarioBeneficio>" + montoUnitarioBeneficio + "</MontoUnitarioBeneficio>\n" + 
 				"\n" + 
@@ -93,8 +93,6 @@ public class ActualizaCausanteClient extends WebServiceGatewaySupport {
 					resp2.setNroDocumento((strXML.substring(strXML.indexOf("<NroDocumento>") + 14, strXML.indexOf("</NroDocumento>"))));
 					resp2.setNroAtencion((strXML.substring(strXML.indexOf("<NroAtencion>") + 12, strXML.indexOf("</NroAtencion>"))));
 
-										
-		
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

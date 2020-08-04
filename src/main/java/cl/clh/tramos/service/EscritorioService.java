@@ -1,6 +1,6 @@
 package cl.clh.tramos.service;
 
-import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,8 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cl.clh.tramos.dto.Propuesta;
+import cl.clh.tramos.model.DatosXmlSiagf;
 import cl.clh.tramos.model.Preresult;
 import cl.clh.tramos.model.PropuestasSiagf;
+import cl.clh.tramos.repository.DatosSiagfXMLRepository;
 import cl.clh.tramos.repository.PreresultRepository;
 import cl.clh.tramos.repository.Propuestas_SiagfRepository;
 import cl.clh.tramos.soap.ActualizaCausanteClient;
@@ -38,12 +40,21 @@ public class EscritorioService {
 	
 	@Autowired
 	private AutenticacionClient aClient;
+	
+	@Autowired
+	private DatosSiagfXMLRepository datosSiagfXMLRepository;
 
 	
 	@Transactional
 	public void persistPropuestasSiagf(PropuestasSiagf propuestaSiagf) {
 		propuestas_SiagfRepository.save(propuestaSiagf);
 	}
+	
+	@Transactional
+	public void persistDataXMLSiagf(DatosXmlSiagf datosXmlSiagf) {
+		datosSiagfXMLRepository.save(datosXmlSiagf);
+	}
+	
 	
 	@Transactional
 	public List<PropuestasSiagf> buscarPropuestasSiagf() {
@@ -82,59 +93,61 @@ public class EscritorioService {
 		
 			case "A":
 				tramo = 1;
-				montoUnitario = 12364;
+				montoUnitario = 11887;
 				break;
 			case "B":
 				tramo = 2;
-				montoUnitario = 12364;
+				montoUnitario = 7259;
 				break;
 			case "C":
 				tramo = 3;
-				montoUnitario = 12364;
+				montoUnitario = 2295;
 				break;
 			case "D":
 				tramo = 4;
-				montoUnitario = 12364;
+				montoUnitario = 0;
 				break;
 			default:
 				tramo = 4;
-				montoUnitario = 12364;
+				montoUnitario = 0;
 				break;
 		}
 		Respuesta2 respuesta = actualizaCausanteClient.modificarCausante(token, propuesta.getRutAfiliado(), propuesta.getRentaProm(), propuesta.getPeriodo(), tramo,montoUnitario, causante);
+		
+		
+		String pattern = "yyyyMMdd HH:mm:ss";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+		String dateNow = simpleDateFormat.format(new Date());
+		
+		if(respuesta != null) {
+			DatosXmlSiagf ds = new DatosXmlSiagf();
+			ds.setCodEstadoSiagf(Integer.parseInt(respuesta.getCodigo()));
+			ds.setActeco("");
+			ds.setCodentidadadm("");
+			ds.setCodtipobeneficio(causante.getCodTipoBeneficio());
+			ds.setCodtipocausante(causante.getCodTipoCausante());
+			ds.setFechaemision(dateNow);
+			ds.setFecpagobeneficio(propuesta.getFecGener());
+			ds.setFecreccausante(causante.getFecRecCausante());
+			ds.setIngpromedio(propuesta.getRentaProm().toString());
+			ds.setMontounitariobeneficio(montoUnitario + "");
+			ds.setNombrebeneficiario(propuesta.getNameFirst() + " " + propuesta.getNameLast() + " " + propuesta.getNameLst2());
+			ds.setNumtramo(tramo + "");
+			ds.setPeriodo(propuesta.getPeriodo());
 			
-		if(respuesta.getCodigo().equals("0")) {
-			PropuestasSiagf ps = new PropuestasSiagf();
-			ps.setCodEstadoFinal(Integer.parseInt(respuesta.getCodigo()));
-			ps.setCodEstadoSiagf(Integer.parseInt(respuesta.getCodigo()));
-			ps.setMensajeSiagf(respuesta.getMensaje());
-			ps.setFecModificaSiagf(new Timestamp((new Date()).getTime()));
-			ps.setMandt(propuesta.getMandt());
-			ps.setNameFirst(propuesta.getNameFirst());
-			ps.setNameLast(propuesta.getNameLast());
-			ps.setNameLst2(propuesta.getNameLst2());
-			ps.setNumMeses(propuesta.getNumMeses());
-			ps.setOtraRem(propuesta.getOtraRem());
-			ps.setDecJurada(propuesta.getDecJurada());
-			ps.setPartner(propuesta.getPartner());
-			ps.setPensiones(propuesta.getPensiones());
-			ps.setPeriodo(propuesta.getPeriodo());
-			ps.setRemEmp(propuesta.getRemEmp());
-			ps.setRentaProm(propuesta.getRentaProm());
-			ps.setRentasInd(propuesta.getRentasInd());		
-			ps.setRutAfiliado(propuesta.getRutAfiliado());
-			ps.setRutEmpresa(propuesta.getRutEmpresa());
-			ps.setSubsidios(propuesta.getSubsidios());
-			ps.setTieneCarga(propuesta.getTieneCarga());
-			ps.setTotIngresos(propuesta.getTotIngresos());
-			ps.setTramo(propuesta.getTramo());
-			ps.setUsuario(propuesta.getUsuario());
-			ps.setWaers(propuesta.getWaers());
+			ds.setRutbeneficiario(propuesta.getRutAfiliado());
+			ds.setRutcausante(causante.getRutCausante());
+			ds.setTipobeneficiario(causante.getCodTipoBeneficio());
+			ds.setTramoasigfam("");
+			ds.setWsCodigo((respuesta.getCodigo()));
+			ds.setWsMensaje(respuesta.getMensaje());
+			ds.setWsNroatencion(respuesta.getNroAtencion());
+			ds.setWsNrodocumento(respuesta.getNroDocumento());
 			
-			persistPropuestasSiagf(ps);
 			
+			persistDataXMLSiagf(ds);			
 			return true;
-			
 		}
 		else
 			return false;
