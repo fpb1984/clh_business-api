@@ -87,10 +87,15 @@ public class ActualizaCausanteClient extends WebServiceGatewaySupport {
 					String strXML =((ActualizarCausanteResponse)getWebServiceTemplate().marshalSendAndReceive(actualizarCausante)).getReturn().getValue();
 					
 					strXML= strXML.substring(strXML.indexOf("\n"), strXML.length());
-					resp2.setCodigo(strXML.substring(strXML.indexOf("<Codigo>") + 8, strXML.indexOf("</Codigo>")));
-					resp2.setMensaje(strXML.substring(strXML.indexOf("<Mensaje>") + 9, strXML.indexOf("</Mensaje>")));
-					System.out.println(resp2.getMensaje());
-					resp2.setNroDocumento((strXML.substring(strXML.indexOf("<NroDocumento>") + 14, strXML.indexOf("</NroDocumento>"))));
+					if(strXML.indexOf("<Codigo>")!=-1)
+						resp2.setCodigo(strXML.substring(strXML.indexOf("<Codigo>") + 8, strXML.indexOf("</Codigo>")));
+					if(strXML.indexOf("<Mensaje>")!=-1) {
+						resp2.setMensaje(strXML.substring(strXML.indexOf("<Mensaje>") + 9, strXML.indexOf("</Mensaje>")));
+						System.out.println(resp2.getMensaje());
+					}
+					if(strXML.indexOf("<NroDocumento>")!=-1)
+						resp2.setNroDocumento((strXML.substring(strXML.indexOf("<NroDocumento>") + 14, strXML.indexOf("</NroDocumento>"))));
+					if(strXML.indexOf("<NroAtencion>")!=-1)
 					resp2.setNroAtencion((strXML.substring(strXML.indexOf("<NroAtencion>") + 12, strXML.indexOf("</NroAtencion>"))));
 
 				} catch (Exception e) {
