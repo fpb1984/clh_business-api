@@ -65,7 +65,7 @@ public class PreresultRestService {
 			propuesta.setEst2("Declarado");
 			propuesta.setUsuario(user);
 		}
-		vars.put("propuestasOUT", propuestas);
+		vars.put("propuestas", propuestas);
 		bpmService.completeTask(user, pass, vars);
 		
 	}
