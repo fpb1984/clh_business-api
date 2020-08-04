@@ -21,7 +21,7 @@ public class BpmTaskService {
 	public List<Propuesta> getCurrentTask(String user, String pass) {
 		
 		
-		  final String uri = "http://localhost:8082/rgp-kieserver-client-api/pam/getCurrentTaskVars?userId=" + user +"&pass=" + pass;
+		  final String uri = "http://clh-kie-api-dev-tramos-piloto.apps.ocp-esc.losheroes.int/rgp-kieserver-client-api/pam/getCurrentTaskVars?userId=" + user +"&pass=" + pass;
 		     System.out.println(uri);
 		    RestTemplate restTemplate = new RestTemplate();
 		    ResponseAPI result = restTemplate.getForObject(uri, ResponseAPI.class);
@@ -35,7 +35,7 @@ public class BpmTaskService {
 	}
 	
 	public void completeTask(String user, String pass, HashMap<String, Object> vars) {
-		  final String uri = "http://localhost:8082/rgp-kieserver-client-api/pam/completeStartTask?userId=" + user +"&pass=" + pass;
+		  final String uri = "http://clh-kie-api-dev-tramos-piloto.apps.ocp-esc.losheroes.int/rgp-kieserver-client-api/pam/completeStartTask?userId=" + user +"&pass=" + pass;
 		  RestTemplate restTemplate = new RestTemplate();
           HttpEntity<HashMap<String, Object>> request = new HttpEntity<>(vars);
           restTemplate.postForLocation(uri, request);

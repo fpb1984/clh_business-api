@@ -12,8 +12,8 @@
 	</parent>
 	
 
-	<groupId>fiscalia.rpg.bpm.api</groupId>
-	<artifactId>rgp-escritorio-bpm-api</artifactId>
+	<groupId>clh.bpm.api</groupId>
+	<artifactId>clh-tramos-bpm-api</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 	
@@ -88,6 +88,19 @@
 			</activation>						
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<exclude>**/*IntegrationTest</exclude>
+							</excludes>
+							<skipTests>true</skipTests>
+						</configuration>
+					</plugin>
 <!-- 					<plugin> -->
 <!-- 						<groupId>org.springframework.boot</groupId> -->
 <!-- 						<artifactId>spring-boot-maven-plugin</artifactId> -->

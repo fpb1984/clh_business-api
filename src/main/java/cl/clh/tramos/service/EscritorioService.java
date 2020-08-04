@@ -134,8 +134,7 @@ public class EscritorioService {
 			ds.setMontounitariobeneficio(montoUnitario + "");
 			ds.setNombrebeneficiario(propuesta.getNameFirst() + " " + propuesta.getNameLast() + " " + propuesta.getNameLst2());
 			ds.setNumtramo(tramo + "");
-			ds.setPeriodo(propuesta.getPeriodo());
-			
+			ds.setPeriodo(propuesta.getPeriodo());			
 			ds.setRutbeneficiario(propuesta.getRutAfiliado());
 			ds.setRutcausante(causante.getRutCausante());
 			ds.setTipobeneficiario(causante.getCodTipoBeneficio());
@@ -143,8 +142,7 @@ public class EscritorioService {
 			ds.setWsCodigo((respuesta.getCodigo()));
 			ds.setWsMensaje(respuesta.getMensaje());
 			ds.setWsNroatencion(respuesta.getNroAtencion());
-			ds.setWsNrodocumento(respuesta.getNroDocumento());
-			
+			ds.setWsNrodocumento(respuesta.getNroDocumento())			
 			
 			persistDataXMLSiagf(ds);			
 			return true;
