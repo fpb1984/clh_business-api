@@ -142,8 +142,8 @@ public class EscritorioService {
 			ds.setWsCodigo((respuesta.getCodigo()));
 			ds.setWsMensaje(respuesta.getMensaje());
 			ds.setWsNroatencion(respuesta.getNroAtencion());
-			ds.setWsNrodocumento(respuesta.getNroDocumento())			
-			
+			ds.setWsNrodocumento(respuesta.getNroDocumento());
+						
 			persistDataXMLSiagf(ds);			
 			return true;
 		}
