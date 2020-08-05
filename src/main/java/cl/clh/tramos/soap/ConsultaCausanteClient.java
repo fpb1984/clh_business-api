@@ -23,10 +23,15 @@ public class ConsultaCausanteClient extends WebServiceGatewaySupport {
 		String strXML =((ConsultaCausanteResponse)getWebServiceTemplate().marshalSendAndReceive(consultaCausante)).getReturn().getValue();
 		
 		strXML.replace("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>", "");
-		causante.setCodTipoBeneficio(strXML.substring(strXML.lastIndexOf("<CodTipoBeneficio>") + 18, strXML.lastIndexOf("</CodTipoBeneficio>")));
-		causante.setRutCausante(strXML.substring(strXML.lastIndexOf("<RutCausante>") + 13, strXML.lastIndexOf("</RutCausante>")));
-		causante.setCodTipoCausante(strXML.substring(strXML.lastIndexOf("<CodTipoCausante>") + 17, strXML.lastIndexOf("</CodTipoCausante>")));
-		causante.setFecRecCausante(strXML.substring(strXML.lastIndexOf("<FecRecCausante>") + 16, strXML.lastIndexOf("</FecRecCausante>")));
+
+		if(strXML.lastIndexOf("<CodTipoBeneficio>")!=-1)
+			causante.setCodTipoBeneficio(strXML.substring(strXML.lastIndexOf("<CodTipoBeneficio>") + 18, strXML.lastIndexOf("</CodTipoBeneficio>")));
+		if(strXML.lastIndexOf("<RutCausante>")!=-1)
+			causante.setRutCausante(strXML.substring(strXML.lastIndexOf("<RutCausante>") + 13, strXML.lastIndexOf("</RutCausante>")));
+		if(strXML.lastIndexOf("<CodTipoCausante>")!=-1)
+			causante.setCodTipoCausante(strXML.substring(strXML.lastIndexOf("<CodTipoCausante>") + 17, strXML.lastIndexOf("</CodTipoCausante>")));
+		if(strXML.lastIndexOf("<FecRecCausante>")!=-1)
+			causante.setFecRecCausante(strXML.substring(strXML.lastIndexOf("<FecRecCausante>") + 16, strXML.lastIndexOf("</FecRecCausante>")));
 	     
 		return causante;
        
