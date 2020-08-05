@@ -76,7 +76,7 @@ public class EscritorioService {
 	}
 	
 	@Transactional
-	public boolean invocarServicioSiagf(Propuesta propuesta) {
+	public boolean invocarServicioSiagf(Propuesta propuesta, String periodo) {
 		
 		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(SoapClientConfig.class);
 
@@ -112,7 +112,7 @@ public class EscritorioService {
 				montoUnitario = 0;
 				break;
 		}
-		Respuesta2 respuesta = actualizaCausanteClient.modificarCausante(token, propuesta.getRutAfiliado(), propuesta.getRentaProm(), propuesta.getPeriodo(), tramo,montoUnitario, causante);
+		Respuesta2 respuesta = actualizaCausanteClient.modificarCausante(token, propuesta.getRutAfiliado(), propuesta.getRentaProm(), periodo, tramo,montoUnitario, causante);
 		
 		
 		String pattern = "yyyyMMdd HH:mm:ss";
@@ -143,7 +143,7 @@ public class EscritorioService {
 			ds.setWsMensaje(respuesta.getMensaje());
 			ds.setWsNroatencion(respuesta.getNroAtencion());
 			ds.setWsNrodocumento(respuesta.getNroDocumento());
-						
+
 			persistDataXMLSiagf(ds);			
 			return true;
 		}

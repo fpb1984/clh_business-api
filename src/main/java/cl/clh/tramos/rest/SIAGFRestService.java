@@ -38,9 +38,9 @@ public class SIAGFRestService {
 
 	
 	@PostMapping("/actualizar")
-	public boolean actualizarCausante(@RequestBody Propuesta propuesta) throws SecurityException{
+	public boolean actualizarCausante(@RequestBody Propuesta propuesta, @RequestParam String periodo) throws SecurityException{
 		
-		return service.invocarServicioSiagf(propuesta);		
+		return service.invocarServicioSiagf(propuesta, periodo);		
 	
 	}
 
