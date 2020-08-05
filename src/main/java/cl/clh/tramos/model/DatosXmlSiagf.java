@@ -53,6 +53,7 @@ public class DatosXmlSiagf implements Serializable {
 
 	private String regionempleador;
 
+	@Id
 	private String rutbeneficiario;
 
 	private String rutcausante;
@@ -62,7 +63,6 @@ public class DatosXmlSiagf implements Serializable {
 	private String tramoasigfam;
 
 	
-	@Id
 	@Column(name="ws_codigo")
 	private String wsCodigo;
 
